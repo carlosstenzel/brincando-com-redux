@@ -5,11 +5,28 @@ const INITIAL_STATE: ICartState = {
   items: []
 }
 
-const cart: Reducer<ICartState> = (state, action) => {
+const cart: Reducer<ICartState> = (state = INITIAL_STATE, action) => {
 
-  console.log(state, action);
+  switch(action.type) {
+    case 'ADD_PRODUCT_TO_CART': {
+
+      const {product} = action.payload;
+
+      state.items.push({
+        product,
+        quantity: 1
+      });
+
+      return state;
+
+      break;
+    }
+    default: {
+      return state;
+    }
+  }
+ 
   
-  return INITIAL_STATE;
 }
 
 export default cart;
