@@ -12,12 +12,11 @@ const cart: Reducer<ICartState> = (state = INITIAL_STATE, action) => {
 
       const {product} = action.payload;
 
-      state.items.push({
-        product,
-        quantity: 1
-      });
+      
 
-      return state;
+      return {...state, items: [...state.items, {
+        product, quantity: 1
+      }]}
 
       break;
     }
